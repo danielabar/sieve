@@ -29,7 +29,8 @@ require.config({
     bootstrapScrollspy: '../bower_components/bootstrap/js/scrollspy',
     bootstrapTab: '../bower_components/bootstrap/js/tab',
     bootstrapTooltip: '../bower_components/bootstrap/js/tooltip',
-    bootstrapTransition: '../bower_components/bootstrap/js/transition'
+    bootstrapTransition: '../bower_components/bootstrap/js/transition',
+    chai: '../bower_components/chai/chai'
   },
   shim: {
     bootstrapAffix: {

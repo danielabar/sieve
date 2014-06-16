@@ -1,5 +1,7 @@
 define(['../app/scripts/sieve'], function(fixture) {
 
+  // var expect = chai.expect;
+
   describe('SieveSpec.js: ', function() {
 
     it('Module is defined', function() {
