@@ -12,8 +12,19 @@ A project to demonstrate client-side JavaScript testing.
 
 ```grunt serve```
 
-## Running Tests
+This starts a static connect server in watch mode, with live reload enabled.
+Any changes in app source will be automatically reloaded in browser.
 
-TODO: Setup a grunt task. For now, using karma command line directly:
+It also starts the karma server, and runs all the tests in watch mode.
+Any changes to app source or tests will trigger re-running of tests.
 
-```./node_modules/karma/bin/karma start```
+## Run Tests Only
+
+```grunt test```
+
+## Build Project and Run Optimized version
+
+  ```
+  grunt build
+  grunt connect:dist:keepalive
+  ```

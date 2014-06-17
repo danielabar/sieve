@@ -44,10 +44,6 @@ module.exports = function (grunt) {
               ],
               tasks: ['karma:unit:run']
             },
-            jstest: {
-                files: ['test/spec/{,*/}*.js'],
-                tasks: ['test:watch']
-            },
             gruntfile: {
                 files: ['Gruntfile.js']
             },
@@ -80,16 +76,6 @@ module.exports = function (grunt) {
                     open: true,
                     base: [
                         '.tmp',
-                        '<%= yeoman.app %>'
-                    ]
-                }
-            },
-            test: {
-                options: {
-                    port: 9001,
-                    base: [
-                        '.tmp',
-                        'test',
                         '<%= yeoman.app %>'
                     ]
                 }
@@ -130,17 +116,6 @@ module.exports = function (grunt) {
                 '!<%= yeoman.app %>/scripts/vendor/*',
                 'test/**/*.js'
             ]
-        },
-
-
-        // Mocha testing framework configuration options
-        mocha: {
-            all: {
-                options: {
-                    run: true,
-                    urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-                }
-            }
         },
 
 
@@ -352,9 +327,6 @@ module.exports = function (grunt) {
             server: [
                 'copy:styles'
             ],
-            test: [
-                'copy:styles'
-            ],
             dist: [
                 'copy:styles',
                 'imagemin',
@@ -385,19 +357,16 @@ module.exports = function (grunt) {
         grunt.task.run([target ? ('serve:' + target) : 'serve']);
     });
 
-    // FIXME hookup karma testing
     grunt.registerTask('test', function (target) {
         if (target !== 'watch') {
             grunt.task.run([
                 'clean:server',
-                'concurrent:test',
                 'autoprefixer'
             ]);
         }
 
         grunt.task.run([
-            'connect:test',
-            'mocha'
+            'karma:continuous'
         ]);
     });
 
