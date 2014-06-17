@@ -7,15 +7,10 @@ define(
   function(sieve, $) {
 
     var init = function() {
-      console.log('App is initializing, reference to jquery is: ');
-      console.dir($);
       sieve.init({
-        number: $('#number').val(),
-        action: $('#calculatePrimes')
+        input: $('#number'),
+        trigger: $('#calculatePrimes')
       });
-
-      var primes = sieve.calculatePrimes(9);
-      console.log('Primes: ' + primes);
     };
 
     return {

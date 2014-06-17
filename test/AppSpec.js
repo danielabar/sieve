@@ -27,10 +27,9 @@ define(
         expect($).not.to.be.undefined;
       });
 
-      it('Init calls sieve to calculate primes', function() {
-        var primeResults = [2, 3];
-        var sieveStub = sandbox.stub(sieve, 'calculatePrimes');
-        sieveStub.returns(primeResults);
+      // TODO: Incorporate html2js so we can verify appropriate DOM elements passed to sieve init
+      it('Initializes sieve', function() {
+        var sieveStub = sandbox.stub(sieve, 'init');
         fixture.init();
         sinon.assert.called(sieveStub);
       });

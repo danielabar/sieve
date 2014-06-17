@@ -12,7 +12,6 @@ define(['../app/scripts/sieve', '../app/bower_components/chai/chai'], function(f
     it('Calculates prime numbers', function() {
       var upTo = 10;
       var result = fixture.calculatePrimes(upTo);
-      // 2, 3, 5, 7
       expect(result).to.have.length(4);
     });
 

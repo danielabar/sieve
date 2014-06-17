@@ -5,6 +5,5 @@ require.config({
 });
 
 require(['app'], function(app) {
-  console.log('main is kicking things off');
   app.init();
 });
