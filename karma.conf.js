@@ -57,7 +57,8 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: true,
+    // set to false if using grunt-contrib-watch
+    autoWatch: false,
 
 
     // start these browsers

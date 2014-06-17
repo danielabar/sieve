@@ -37,6 +37,13 @@ module.exports = function (grunt) {
                     livereload: true
                 }
             },
+            karma: {
+              files: [
+                '<%= yeoman.app %>/scripts/{,*/}*.js',
+                'test/**/*.js'
+              ],
+              tasks: ['karma:unit:run']
+            },
             jstest: {
                 files: ['test/spec/{,*/}*.js'],
                 tasks: ['test:watch']
@@ -137,7 +144,20 @@ module.exports = function (grunt) {
         },
 
 
-
+        // Karma testing framework configuration options
+        karma: {
+          // Run karma in a child process so it doesn't block subsequent grunt tasks
+          unit: {
+            configFile: 'karma.conf.js',
+            background: true
+          },
+          // Continuous integration mode: run tests once in PhantomJS browser
+          continuous: {
+            configFile: 'karma.conf.js',
+            singleRun: true,
+            browsers: ['PhantomJS']
+          }
+        },
 
 
         // Add vendor prefixed styles
@@ -354,6 +374,8 @@ module.exports = function (grunt) {
             'concurrent:server',
             'autoprefixer',
             'connect:livereload',
+            'karma:unit:start',
+            'karma:unit',
             'watch'
         ]);
     });
@@ -363,6 +385,7 @@ module.exports = function (grunt) {
         grunt.task.run([target ? ('serve:' + target) : 'serve']);
     });
 
+    // FIXME hookup karma testing
     grunt.registerTask('test', function (target) {
         if (target !== 'watch') {
             grunt.task.run([
