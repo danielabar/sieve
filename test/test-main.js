@@ -30,7 +30,8 @@ require.config({
     bootstrapTab: '../bower_components/bootstrap/js/tab',
     bootstrapTooltip: '../bower_components/bootstrap/js/tooltip',
     bootstrapTransition: '../bower_components/bootstrap/js/transition',
-    chai: '../bower_components/chai/chai'
+    chai: '../bower_components/chai/chai',
+    sinon: '../bower_components/sinon/lib/sinon'
   },
   shim: {
     bootstrapAffix: {

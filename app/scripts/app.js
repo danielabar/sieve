@@ -1,4 +1,4 @@
-define(['sieve'], function(sieve) {
+define(['./sieve'], function(sieve) {
 
   var init = function() {
     console.log('App is initializing');
