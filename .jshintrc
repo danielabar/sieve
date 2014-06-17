@@ -23,6 +23,7 @@
       /* REQUIREJS */
       "define"     : false,
       /* MOCHA */
+      "sinon"      : false,
       "describe"   : false,
       "it"         : false,
       "before"     : false,

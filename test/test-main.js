@@ -16,8 +16,13 @@ require.config({
   // Karma serves files under /base, which is the basePath from your config file
   baseUrl: '/base',
 
+  // Do not have paths starting with '../' because Karma RequireJS Adapter
+  // will not resolve them properly when the production code uses them with no other path portion.
+  // If you encounter karma errors related to requirejs, add console.logs to
+  //    node_modules/karma-requirejs/lib/adapter.js, method: createPatchedLoad
+  // Log the values of moduleName, url before and after normalizing
   paths: {
-    jquery: '../bower_components/jquery/jquery',
+    jquery: 'app/bower_components/jquery/jquery',
     bootstrapAffix: '../bower_components/bootstrap/js/affix',
     bootstrapAlert: '../bower_components/bootstrap/js/alert',
     bootstrapButton: '../bower_components/bootstrap/js/button',
