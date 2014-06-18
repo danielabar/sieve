@@ -2,13 +2,14 @@
 
 define(['jquery'], function($) {
 
-  var init = function(options) {
-    registerHandlers(options);
+  var init = function(config) {
+    registerHandlers(config);
   };
 
-  var registerHandlers = function(options) {
-    options.trigger.on('click', function(e) {
-      calculatePrimes(options.input.val());
+  var registerHandlers = function(config) {
+    config.action.on('click', function(e) {
+      var result = calculatePrimes(config.input.val());
+      displayOutput(result, config.output);
       e.preventDefault();
     });
   };
@@ -20,9 +21,15 @@ define(['jquery'], function($) {
     return [2, 3, 5, 7];
   };
 
+  var displayOutput = function(result, outputElement) {
+    var formattedResult = result.join(', ');
+    outputElement.append(formattedResult);
+  };
+
   return {
     init: init,
-    calculatePrimes: calculatePrimes
+    calculatePrimes: calculatePrimes,
+    displayOutput: displayOutput
   };
 
 });

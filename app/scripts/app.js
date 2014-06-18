@@ -9,7 +9,8 @@ define(
     var init = function() {
       sieve.init({
         input: $('#number'),
-        trigger: $('#calculatePrimes')
+        action: $('#calculatePrimes'),
+        output: $('#primeResults')
       });
     };
 
