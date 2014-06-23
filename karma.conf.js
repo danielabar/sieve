@@ -17,6 +17,7 @@ module.exports = function(config) {
     files: [
       {pattern: 'app/bower_components/**/*.js', included: false},
       {pattern: 'app/scripts/**/*.js', included: false},
+      'test/html/*Spec.html',
       {pattern: 'test/**/*Spec.js', included: false},
       'test/test-main.js'
     ],
@@ -34,7 +35,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-
+      '**/*.html': ['html2js']
     },
 
 
