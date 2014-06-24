@@ -42,7 +42,7 @@ define([
 
         var result = fixture.loadPartial(config);
         expect(result.state()).to.equal('pending');
-        sinon.assert.called(loadStub);
+        sinon.assert.calledWith(loadStub, 'whatever.html', sinon.match.func);
       });
 
     });
