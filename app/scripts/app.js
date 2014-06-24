@@ -2,11 +2,17 @@
 define(
   [
     './sieve',
+    './news',
     'jquery'
   ],
-  function(sieve, $) {
+  function(sieve, news, $) {
 
     var init = function() {
+      initSieve();
+      initNews();
+    };
+
+    var initSieve = function() {
       sieve.init({
         input: $('#number'),
         action: $('#calculatePrimes'),
@@ -14,8 +20,18 @@ define(
       });
     };
 
+    var initNews = function() {
+      news.init({
+        action: $('a#aboutSieve'),
+        loadInto: $('.mainContent'),
+        partial: 'partials/news.html'
+      });
+    };
+
     return {
-      init: init
+      init: init,
+      initSieve: initSieve,
+      initNews: initNews
     };
 
   });

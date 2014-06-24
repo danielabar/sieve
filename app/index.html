@@ -32,45 +32,47 @@
             <div class="header">
                 <ul class="nav nav-pills pull-right">
                     <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a id="aboutSieve" href="#">About</a></li>
                     <li><a href="#">Contact</a></li>
                 </ul>
                 <h3 class="text-muted">Sieve of Eratosthenes</h3>
             </div>
 
-            <div class="row">
+            <div class="mainContent">
+              <div class="row">
+                  <div class="col-lg-12">
+
+                    <form class="form-horizontal">
+                      <fieldset>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="number">Enter a number</label>
+                          <div class="col-md-4">
+                            <input id="number" name="number" type="text" placeholder="" class="form-control input-md" required="">
+                          </div>
+                        </div>
+
+                        <!-- Button -->
+                        <div class="form-group">
+                          <label class="col-md-4 control-label" for="calculatePrimes"></label>
+                          <div class="col-md-4">
+                            <button id="calculatePrimes" name="calculatePrimes" class="btn btn-primary">Calculate</button>
+                          </div>
+                        </div>
+
+                        </fieldset>
+                      </form>
+
+                  </div><!--//col-lg-12-->
+              </div><!--//row-->
+
+              <div class="row">
                 <div class="col-lg-12">
-
-                  <form class="form-horizontal">
-                    <fieldset>
-
-                      <!-- Text input-->
-                      <div class="form-group">
-                        <label class="col-md-4 control-label" for="number">Enter a number</label>
-                        <div class="col-md-4">
-                          <input id="number" name="number" type="text" placeholder="" class="form-control input-md" required="">
-                        </div>
-                      </div>
-
-                      <!-- Button -->
-                      <div class="form-group">
-                        <label class="col-md-4 control-label" for="calculatePrimes"></label>
-                        <div class="col-md-4">
-                          <button id="calculatePrimes" name="calculatePrimes" class="btn btn-primary">Calculate</button>
-                        </div>
-                      </div>
-
-                      </fieldset>
-                    </form>
-
-                </div><!--//col-lg-12-->
-            </div><!--//row-->
-
-            <div class="row">
-              <div class="col-lg-12">
-                <div id="primeResults"></div>
-              </div>
-            </div>
+                  <div id="primeResults"></div>
+                </div>
+              </div><!--//row-->
+            </div><!--/mainContent-->
 
         </div><!--//container-->
 

@@ -12,8 +12,11 @@ A project to demonstrate client-side JavaScript testing for an app built with Re
 * [Mocha](http://visionmedia.github.io/mocha/) JavaScript test framework
 * [Chai](http://chaijs.com/) BDD assertion library
 * [Sinon.JS](http://sinonjs.org/docs/) Standalone test spies, stubs and mocks for JavaScript
+* [karma-html2js-preprocessor](https://github.com/karma-runner/karma-html2js-preprocessor) Karma plugin to support unit testing code that performs DOM manipulation
 
-NOTE: For mocking ajax with jsonp, see this sinon issue [here](https://github.com/cjohansen/Sinon.JS/issues/41)
+### Testing Notes
+* For stubbing jQuery ajax with jsonp, see this sinon issue [here](https://github.com/cjohansen/Sinon.JS/issues/41)
+* For stubbing jQuery promises with sinon, see this SO thread [here](http://stackoverflow.com/questions/13148356/how-to-properly-unit-test-jquerys-ajax-promises-using-jasmine-and-or-sinon)
 
 ## Setup
 * git clone this repo

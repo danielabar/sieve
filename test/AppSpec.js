@@ -30,7 +30,7 @@ define(
       // TODO: Incorporate html2js so we can verify appropriate DOM elements passed to sieve init
       it('Initializes sieve', function() {
         var sieveStub = sandbox.stub(sieve, 'init');
-        fixture.init();
+        fixture.initSieve();
         sinon.assert.called(sieveStub);
       });
 
