@@ -17,7 +17,7 @@ define([
       expect(fixture).not.to.be.undefined;
     });
 
-    it('HTL snippet is available for testing DOM manipulation', function() {
+    it('HTML snippet is available for testing DOM manipulation', function() {
       var tplEl = $('#sieveTpl');
       expect(tplEl.text()).to.match(/Sieve Template for Unit Testing/);
     });

@@ -16,6 +16,7 @@ define(
       });
     };
 
+    // TODO: deferred.reject() if erorr loading partial ('Ajax request encounters an error' in http://api.jquery.com/load/)
     var loadPartial = function(config) {
       var deferred = new $.Deferred();
       config.loadInto.load(config.partial, function() {
@@ -30,7 +31,8 @@ define(
     };
 
     return {
-      init: init
+      init: init,
+      loadPartial: loadPartial
     };
 
   });
