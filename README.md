@@ -1,6 +1,19 @@
 # Sieve
 
-A project to demonstrate client-side JavaScript testing.
+A project to demonstrate client-side JavaScript testing for an app built with RequireJS.
+
+## Development Stack
+* App scaffolded with [yeoman](http://yeoman.io/) using [generator-webapp-rjs](https://www.npmjs.org/package/generator-webapp-rjs)
+* [RequireJS](http://requirejs.org/) for module loading
+* [jQuery](http://jquery.com/) for DOM manipulation and ajax
+
+## Testing Stack
+* [Karma](http://karma-runner.github.io/0.12/intro/how-it-works.html) test runner
+* [Mocha](http://visionmedia.github.io/mocha/) JavaScript test framework
+* [Chai](http://chaijs.com/) BDD assertion library
+* [Sinon.JS](http://sinonjs.org/docs/) Standalone test spies, stubs and mocks for JavaScript
+
+NOTE: For mocking ajax with jsonp, see this sinon issue [here](https://github.com/cjohansen/Sinon.JS/issues/41)
 
 ## Setup
 * git clone this repo
