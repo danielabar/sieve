@@ -31,12 +31,12 @@ define([
         expect(tplEl.text()).to.match(/News Template for Unit Testing/);
       });
 
-      it('Calls jQuery load on config.loadInto and loads config.partial', function() {
-        // Not modifying DOM in this test, but need a reference to an element to stub jQuery load function
+      it('Loads partial successfully', function(done) {
         var newsContainer = $('#newsContainer');
+        var newsPartial = $('#newsPartial');
         var loadStub = sandbox.stub(newsContainer, 'load', function() {
           var d = $.Deferred();
-          d.resolve($('#newsPartial'));
+          d.resolve(newsPartial);
           return d.promise();
         });
         var config = {
@@ -47,6 +47,16 @@ define([
         var result = fixture.loadPartial(config);
         expect(result.state()).to.equal('resolved');
         sinon.assert.calledWith(loadStub, 'whatever.html');
+
+        var successCB = function(data) {
+          expect(data).to.equal(newsPartial);
+          done();
+        };
+        // should never get here
+        var errorCB = function() {
+          expect(false).to.be(true);
+        };
+        result.then(successCB, errorCB);
       });
 
     });
