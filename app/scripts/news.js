@@ -25,15 +25,7 @@ define(
     };
 
     var loadPartial = function(config) {
-      var deferred = new $.Deferred();
-      config.loadInto.load(config.partial, function(response, status, xhr) {
-        if (status === 'error') {
-          deferred.reject(xhr.status + ' ' + xhr.statusText);
-        } else {
-          deferred.resolve(response);
-        }
-      });
-      return deferred.promise();
+      return config.loadInto.load(config.partial).promise();
     };
 
     var searchNews = function() {

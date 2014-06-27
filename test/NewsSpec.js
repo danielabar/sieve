@@ -34,15 +34,19 @@ define([
       it('Calls jQuery load on config.loadInto and loads config.partial', function() {
         // Not modifying DOM in this test, but need a reference to an element to stub jQuery load function
         var newsContainer = $('#newsContainer');
-        var loadStub = sandbox.stub(newsContainer, 'load');
+        var loadStub = sandbox.stub(newsContainer, 'load', function() {
+          var d = $.Deferred();
+          d.resolve($('#newsPartial'));
+          return d.promise();
+        });
         var config = {
           loadInto: newsContainer,
           partial: 'whatever.html'
         };
 
         var result = fixture.loadPartial(config);
-        expect(result.state()).to.equal('pending');
-        sinon.assert.calledWith(loadStub, 'whatever.html', sinon.match.func);
+        expect(result.state()).to.equal('resolved');
+        sinon.assert.calledWith(loadStub, 'whatever.html');
       });
 
     });
