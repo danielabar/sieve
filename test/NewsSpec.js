@@ -49,6 +49,9 @@ define([
 
     describe('searchNews: ', function() {
 
+      var expectedNewsUrl = 'http://content.guardianapis.com/search?show-fields=all';
+      var expectedDataType = 'jsonp';
+
       var sandbox = sinon.sandbox.create();
 
       afterEach(function() {
@@ -68,6 +71,10 @@ define([
         var result = fixture.searchNews();
         expect(result.state()).to.equal('resolved');
         sinon.assert.called(ajaxStub);
+        sinon.assert.calledWith(ajaxStub, sinon.match({
+          url: expectedNewsUrl,
+          dataType: expectedDataType
+        }));
 
         var successCB = function(data) {
           expect(data.news).to.equal('this is an article of some sort');

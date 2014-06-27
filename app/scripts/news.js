@@ -15,18 +15,23 @@ define(
       });
     };
 
+    // TODO: add fail callbacks for when any of the promises are rejected http://api.jquery.com/jquery.when/
     var displayNews = function(config) {
-      $.when(loadPartial(config), searchNews()).done(function(results1, response) {
+      $.when(loadPartial(config), searchNews()).done(function(loadResponse, newsResponse) {
         console.log('Now ready to display the news');
-        console.log(response);
+        console.log(loadResponse);
+        console.log(newsResponse);
       });
     };
 
-    // TODO: deferred.reject() if erorr loading partial ('Ajax request encounters an error' in http://api.jquery.com/load/)
     var loadPartial = function(config) {
       var deferred = new $.Deferred();
-      config.loadInto.load(config.partial, function() {
-        deferred.resolve();
+      config.loadInto.load(config.partial, function(response, status, xhr) {
+        if (status === 'error') {
+          deferred.reject(xhr.status + ' ' + xhr.statusText);
+        } else {
+          deferred.resolve(response);
+        }
       });
       return deferred.promise();
     };

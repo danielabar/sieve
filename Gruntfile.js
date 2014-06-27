@@ -30,6 +30,7 @@ module.exports = function (grunt) {
             js: {
                 files: [
                   '<%= yeoman.app %>/scripts/{,*/}*.js',
+                  '!test/coverage/**/*.js',
                   'test/**/*.js'
                 ],
                 tasks: ['jshint'],
