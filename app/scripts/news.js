@@ -10,9 +10,15 @@ define(
 
     var registerHandlers = function(config) {
       config.action.on('click', function(e) {
-        var loadPromise = loadPartial(config);
-        loadPromise.then(searchNews);
+        displayNews(config);
         e.preventDefault();
+      });
+    };
+
+    var displayNews = function(config) {
+      $.when(loadPartial(config), searchNews()).done(function(results1, response) {
+        console.log('Now ready to display the news');
+        console.log(response);
       });
     };
 
@@ -27,7 +33,13 @@ define(
     };
 
     var searchNews = function() {
-      console.log('searching for news...');
+      return $.ajax({
+        url: 'http://content.guardianapis.com/search?show-fields=all',
+        data: {
+          q: 'mathematician'
+        },
+        dataType: 'jsonp'
+      }).promise();
     };
 
     return {
