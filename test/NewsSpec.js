@@ -57,25 +57,56 @@ define([
 
       // Use mocha's 'done' callback for testing asynchronous code
       it('Gets the news successfully', function(done) {
-        var okResponse = function() {
+        var ajaxResponse = function() {
           var d = $.Deferred();
           d.resolve({news: 'this is an article of some sort'});
           return d.promise();
         };
-        var ajaxStub = sinon.stub($, 'ajax');
-        ajaxStub.returns(okResponse());
+        var ajaxStub = sandbox.stub($, 'ajax');
+        ajaxStub.returns(ajaxResponse());
 
         var result = fixture.searchNews();
         expect(result.state()).to.equal('resolved');
         sinon.assert.called(ajaxStub);
 
-        result.then(function(data) {
-          console.log(data);
+        var successCB = function(data) {
           expect(data.news).to.equal('this is an article of some sort');
           done();
-        });
+        };
+
+        // should never get here
+        var errorCB = function() {
+          expect(false).to.be(true);
+        };
+
+        result.then(successCB, errorCB);
       });
 
+      it('Rejects when news api call fails', function(done) {
+        var ajaxResponse = function() {
+          var d = $.Deferred();
+          d.reject({status: 'FAILED'});
+          return d.promise();
+        };
+        var ajaxStub = sandbox.stub($, 'ajax');
+        ajaxStub.returns(ajaxResponse());
+
+        var result = fixture.searchNews();
+        expect(result.state()).to.equal('rejected');
+        sinon.assert.called(ajaxStub);
+
+        // should never get here
+        var successCB = function(data) {
+          expect(false).to.be(true);
+        };
+
+        var errorCB = function(error) {
+          expect(error.status).to.equal('FAILED');
+          done();
+        };
+
+        result.then(successCB, errorCB);
+      });
 
     });
   });

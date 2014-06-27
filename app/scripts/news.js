@@ -26,7 +26,6 @@ define(
     var loadPartial = function(config) {
       var deferred = new $.Deferred();
       config.loadInto.load(config.partial, function() {
-        console.log('partial loaded');
         deferred.resolve();
       });
       return deferred.promise();
