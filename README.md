@@ -23,6 +23,10 @@ A project to demonstrate client-side JavaScript testing for an app built with Re
 * cd into the project directory
 * ```npm install```
 * ```bower install```
+* ```mkdir test/coverage```
+
+The ```coverage``` directory is not committed to git, that's why you must create it manually.
+This is where the test coverage reports will be generated.
 
 ## Run Project
 
@@ -30,9 +34,12 @@ A project to demonstrate client-side JavaScript testing for an app built with Re
 
 This starts a static connect server in watch mode, with live reload enabled.
 Any changes in app source will be automatically reloaded in browser.
+The watch task also lints all the JavaScript code using [jshint](http://www.jshint.com/).
 
 It also starts the karma server, and runs all the tests in watch mode.
 Any changes to app source or tests will trigger re-running of tests.
+
+Test runs also generate a code coverage report. See the results at ```test/coverage```
 
 ## Run Tests Only
 
@@ -44,3 +51,6 @@ Any changes to app source or tests will trigger re-running of tests.
   grunt build
   grunt connect:dist:keepalive
   ```
+
+## TODO
+* Handlebars templating, see this [presentation](http://www.slideshare.net/iivanoo/requirejs-handlebars) for integrating Handlebars and RequireJS
