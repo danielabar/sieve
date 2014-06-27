@@ -59,6 +59,33 @@ define([
         result.then(successCB, errorCB);
       });
 
+      it('Load partial fails', function(done) {
+        var newsContainer = $('#newsContainer');
+        var loadStub = sandbox.stub(newsContainer, 'load', function() {
+          var d = $.Deferred();
+          d.reject({status: 'LOAD FAILED'});
+          return d.promise();
+        });
+        var config = {
+          loadInto: newsContainer,
+          partial: 'whatever.html'
+        };
+
+        var result = fixture.loadPartial(config);
+        expect(result.state()).to.equal('rejected');
+        sinon.assert.calledWith(loadStub, 'whatever.html');
+
+        // should never get here
+        var successCB = function(data) {
+          expect(false).to.be(true);
+        };
+        var errorCB = function(error) {
+          expect(error.status).to.equal('LOAD FAILED');
+          done();
+        };
+        result.then(successCB, errorCB);
+      });
+
     });
 
     describe('searchNews: ', function() {
