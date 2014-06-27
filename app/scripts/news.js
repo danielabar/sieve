@@ -44,7 +44,8 @@ define(
 
     return {
       init: init,
-      loadPartial: loadPartial
+      loadPartial: loadPartial,
+      searchNews: searchNews
     };
 
   });

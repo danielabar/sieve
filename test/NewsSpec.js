@@ -47,6 +47,37 @@ define([
 
     });
 
+    describe('searchNews: ', function() {
+
+      var sandbox = sinon.sandbox.create();
+
+      afterEach(function() {
+        sandbox.restore();
+      });
+
+      // Use mocha's 'done' callback for testing asynchronous code
+      it('Gets the news successfully', function(done) {
+        var okResponse = function() {
+          var d = $.Deferred();
+          d.resolve({news: 'this is an article of some sort'});
+          return d.promise();
+        };
+        var ajaxStub = sinon.stub($, 'ajax');
+        ajaxStub.returns(okResponse());
+
+        var result = fixture.searchNews();
+        expect(result.state()).to.equal('resolved');
+        sinon.assert.called(ajaxStub);
+
+        result.then(function(data) {
+          console.log(data);
+          expect(data.news).to.equal('this is an article of some sort');
+          done();
+        });
+      });
+
+
+    });
   });
 
 });
