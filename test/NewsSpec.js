@@ -70,7 +70,6 @@ define([
 
         var result = fixture.searchNews();
         expect(result.state()).to.equal('resolved');
-        sinon.assert.called(ajaxStub);
         sinon.assert.calledWith(ajaxStub, sinon.match({
           url: expectedNewsUrl,
           dataType: expectedDataType
@@ -100,7 +99,10 @@ define([
 
         var result = fixture.searchNews();
         expect(result.state()).to.equal('rejected');
-        sinon.assert.called(ajaxStub);
+        sinon.assert.calledWith(ajaxStub, sinon.match({
+          url: expectedNewsUrl,
+          dataType: expectedDataType
+        }));
 
         // should never get here
         var successCB = function(data) {
