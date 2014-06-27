@@ -49,7 +49,7 @@ module.exports = function(config) {
     // coverage reporter options https://github.com/karma-runner/karma-coverage
     coverageReporter: {
       type: 'html',
-      dir: 'test/coverage/'
+      dir: 'coverage/'
     },
 
 
