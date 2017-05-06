@@ -9,7 +9,7 @@ A project to demonstrate client-side JavaScript testing for an app built with Re
 
 ## Testing Stack
 * [Karma](http://karma-runner.github.io/0.12/intro/how-it-works.html) test runner
-* [Mocha](http://visionmedia.github.io/mocha/) JavaScript test framework
+* [Mocha](http://mochajs.org/) JavaScript test framework
 * [Chai](http://chaijs.com/) BDD assertion library
 * [Sinon.JS](http://sinonjs.org/docs/) Standalone test spies, stubs and mocks for JavaScript
 * [karma-html2js-preprocessor](https://github.com/karma-runner/karma-html2js-preprocessor) Karma plugin to support unit testing code that performs DOM manipulation
